@@ -219,3 +219,6 @@ pip-log.txt
 *.synctex.gz
 *.pdf
 *.log
+*.out
+*.blg
+*.bbl
