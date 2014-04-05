@@ -2,41 +2,23 @@
 \documentclass[conference]{IEEEtran}
 
 
-
 \begin{document}
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Some Kind of Paper about MedRadio Receivers}
+\title{MedRadio Reciever Design}
 
 
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
-\author{\IEEEauthorblockN{Michael Shell}
-\IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
-Georgia Institute of Technology\\
-Atlanta, Georgia 30332--0250\\
-Email: http://www.michaelshell.org/contact.html}
-\and
-\IEEEauthorblockN{Homer Simpson}
-\IEEEauthorblockA{Twentieth Century Fox\\
-Springfield, USA\\
-Email: homer@thesimpsons.com}
-\and
-\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
-\IEEEauthorblockA{Starfleet Academy\\
-San Francisco, California 96678-2391\\
-Telephone: (800) 555--1212\\
-Fax: (888) 555--1212}}
-
-
-
-
+\author{\IEEEauthorblockN{Elie Rosen, Gradeigh Clark, Jianqing Liu, Fanpeng Kong}
+\IEEEauthorblockA{Department of Electrical and Computer Engineering\\
+Rutgers, the State University of New Jersey\\
+Piscataway, New Jersey 08854}}
 
 % make the title area
 \maketitle
-
 
 \begin{abstract}
 \input{abstract}
@@ -46,43 +28,18 @@ Fax: (888) 555--1212}}
 \IEEEpeerreviewmaketitle
 
 \input{introduction}
-\input{relatedwork}
-\input{method}
-\input{results}
-\input{discussion}
+\input{receiver}
+\input{design}
+\input{integration}
 \input{conclusions}
 
 
 
+{%\footnotesize\singlespacing
+\bibliography{references}{}
+\bibliographystyle{plain}
+}
 
-
-
-% conference papers do not normally have an appendix
-
-
-% use section* for acknowledgement
-\section*{Acknowledgment}
-
-
-The authors would like to thank President Obama.
-
-
-
-
-
-
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
-
-
-
-
-% that's all folks
 \end{document}
 
 
