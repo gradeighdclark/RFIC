@@ -14,7 +14,7 @@ As shown in Figure ~\ref{fig:lna}, there are two structures that are popularly u
 
 It isn't clear exactly which structure would be better: cascode or current-reuse. As such, what follows is our analysis of current reuse to figure out if there are any problems with it.
 
-With the current reuse structure, the active components are heavily restrained so as to limit the power consumption~\cite{lna}. As such, the passive networks depicted in Figure~\ref{fig:lna} perform much of the gain~\cite{lna}. The power consumption is minimized by using this kind of structure since we need a small operating current to activate the MOSFETs and we will achieve gain from the other components. Additionally, the two transistors in the current reuse structure can be biased into subthreshold region to minimize the power consumption. The $g_m$ parameter of this component is the $g_m$ of NMOS plus the $g_m$ of the PMOS. In this way, the effective transconductance is larger than it would be otherwise. The gain of the current reuse LNA is:
+With the current reuse structure, the active components are heavily restrained so as to limit the power consumption~\cite{lna}. As such, the passive networks depicted in Fig.~\ref{fig:lna} perform much of the gain~\cite{lna}. The power consumption is minimized by using this kind of structure since we need a small operating current to activate the MOSFETs and we will achieve gain from the other components. Additionally, the two transistors in the current reuse structure can be biased into subthreshold region to minimize the power consumption. The $g_m$ parameter of this component is the $g_m$ of NMOS plus the $g_m$ of the PMOS. In this way, the effective transconductance is larger than it would be otherwise. The gain of the current reuse LNA is:
 
 \begin{equation} 
   	A_{v} = \frac{g_{mtot}}{2R_s \omega_0 C_{gs}}Z_{load}
@@ -57,7 +57,7 @@ A mixer takes two signals and produces an output that contains both the sum and 
 Internally, active mixers split down into single balanced and double balanced mixers. Double-balanced mixers can provide better input linearity, relatively low noise, and completely isolate the LO to RF ports resulting in very little feedthrough when compared to single balanced mixers. The cons are that the circuit requires large off-chip baluns/transformers to split the signal outputs if the other components do not do it already. 
 
 \subsubsection{Design Procedure}
-The typical mixer implementation is a standard Gilbert cell~\cite{gilbert}, which is a stock double-balanced mixer. The Gilbert cell original design doesn't have low noise, consumes relatively high power (for MedRadio), and needs to operate from a much larger supply voltage (must be capable of activating all transistors across ground). We employed the modified Gilbert cell from Krcmar et. al~\cite{krcmar1}. It is pictured in Figure~\ref{fig:mixer}. 
+The typical mixer implementation is a standard Gilbert cell~\cite{gilbert}, which is a stock double-balanced mixer. The Gilbert cell original design doesn't have low noise, consumes relatively high power (for MedRadio), and needs to operate from a much larger supply voltage (must be capable of activating all transistors across ground). We employed the modified Gilbert cell from Krcmar et. al~\cite{krcmar1}. It is pictured in Fig.~\ref{fig:mixer}. 
 
 \begin{figure}[h]
    \centering
