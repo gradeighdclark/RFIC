@@ -1,9 +1,29 @@
 \section{Results}
 \subsection{Low Noise Amplifier}
-Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the input matching quality. The minimum input matching is -21 dB. Fig. ~\ref{fig:s22}, the S22, output matching is presented. The minimum matching point is -33 dB. Also, the gain (S21 parameters) can be seen from Fig. ~\ref{fig:s21}. This LNA provides a relative high gain, 17.5 dB. To show the linearity property of the LNA, the 1 dB compression point plot is presented in Fig. ~\ref{fig:lna1db}. From the figure, the 1 dB compression point is -16.46 dBm. Also, the IIP3 is preformed in cadence simulation, which is shown in Fig. ~\ref{fig:lnaiip3}. The IIP3 point is -7.77 dBm. Noise Figure and minimum Noise Figure of the LNA is presented In Fig. ~\ref{fig:lnanoise} and Fig. ~\ref{fig:lnanoisemin} respectively. The Noise Figure is 3.4 dB and the minimum Noise Figure is 1.2 dB. To match the design requirement, the DC power consumption of the LNA is 0.57 mW. 
+Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the input matching quality. The minimum input matching is -21 dB. Fig. ~\ref{fig:s22}, the S22, output matching is presented. The minimum matching point is -33 dB. Also, the gain (S21 parameters) can be seen from Fig. ~\ref{fig:s21}. This LNA provides a relative high gain, 17.5 dB. To show the linearity property of the LNA, the 1 dB compression point plot is presented in Fig. ~\ref{fig:lna1db}. From the figure, the 1 dB compression point is -16.46 dBm. Also, the IIP3 is preformed in cadence simulation, which is shown in Fig. ~\ref{fig:lnaiip3}. The IIP3 point is -7.77 dBm. Noise Figure and minimum Noise Figure of the LNA is presented In Fig. ~\ref{fig:lnanoise} and Fig. ~\ref{fig:lnanoisemin} respectively. The Noise Figure is 3.4 dB and the minimum Noise Figure is 1.2 dB. To match the design requirement, the DC power consumption of the LNA is 0.57 mW. Final LNA results can be found in TABLE \ref{tab:lnaresults}
+
+%table of results
+\begin{table}[H]
+\begin{center}
+	\begin{tabular}{ |c | c | }
+ 		\hline                      
+  		S11 & -21 dB \\ \hline
+  		S21 &  17.50 dB \\ \hline
+  		S22 & -33 dB \\ \hline
+		NF/NFmin & 3.40/1.2 dB \\ \hline
+		IIP3 & -7.77 dBm\\ \hline
+		1 dB compression & -16.46 dBm \\  \hline
+		Power consumption & 0.57 mW \\ 
+  		\hline  
+	\end{tabular}
+
+\end{center}
+\caption{Final results from LNA simulations}
+\label{tab:lnaresults}
+\end{table}
 
 %s11
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/s11.png}
     \caption{Graph of LNA S11 input matching}
@@ -11,7 +31,7 @@ Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the inp
 \end{figure}
 
 %s22
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/s22.png}
     \caption{Graph of LNA S22 output matching}
@@ -19,7 +39,7 @@ Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the inp
 \end{figure}
 
 %s21
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/s21.png}
     \caption{Graph of LNA S21 gain}
@@ -27,15 +47,15 @@ Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the inp
 \end{figure}
 
 %1dbcompression
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/lna1db.png}
     \caption{LNA 1 dB compression point}
-    \label{fig:1db}
+    \label{fig:lna1db}
 \end{figure}
 
 %IIP3
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/lnaiip3.png}
     \caption{LNA Linearity}
@@ -43,7 +63,7 @@ Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the inp
 \end{figure}
 
 %noise
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/lnanoise.png}
     \caption{Graph of LNA noise figure}
@@ -51,7 +71,7 @@ Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the inp
 \end{figure}
 
 %min noise
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/lnanoisemin.png}
     \caption{Graph of LNA minimum noise figure}
@@ -62,7 +82,7 @@ Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the inp
 Although the assignment only asked to see conversion gain with respect to frequency as shown in Fig. ~\ref{fig:cgfreq} we also simulated for conversion gain with respect to input power as shown in Fig. ~\ref{fig:cgpwr}. These graphs show that the mixer is able to maintain good gain across the frequencies of interest as well as consistent gain across sensitivities as low as -100 dBm. Fig. ~\ref{fig:loif} and Fig. ~\ref{fig:lorf} show the VCO feedthrough to the input and output ports. As can be seen in the graphs, the setup of the mixer causes these figures to be very low. The noise of the mixer was found to be 4.40 dB as shown in Fig. ~\ref{fig:mixernoise}. Lastly, the linearity of the mixer can be found in Fig. ~\ref{fig:mixerlin}. The linearity is quite lower than expected however this was a trade-off to achieve a high gain and low noise. Final mixer results can be found in TABLE ~\ref{tab:mixerresults}.
 
 %table of results
-\begin{table}[h]
+\begin{table}[H]
 \begin{center}
 	\begin{tabular}{ |c | c | }
  		\hline                      
@@ -81,7 +101,7 @@ Although the assignment only asked to see conversion gain with respect to freque
 \end{table}
 
 %mixer conversion gain vs frequency
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/MixerConversionGainFreq.png}
     \caption{Mixer conversion gain with respect to frequency}
@@ -89,7 +109,7 @@ Although the assignment only asked to see conversion gain with respect to freque
 \end{figure}
 
 %mixer conversion gain vs power
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/MixerConversionGain.png}
     \caption{Mixer conversion gain with respect to input power}
@@ -98,7 +118,7 @@ Although the assignment only asked to see conversion gain with respect to freque
 
 
 %LO-IF feedthrough
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/MixerLO-IFfeed.png}
     \caption{Mixer oscillator to IF output feedthrough}
@@ -106,7 +126,7 @@ Although the assignment only asked to see conversion gain with respect to freque
 \end{figure}
 
 %LO-RF feedthrough
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/MixerLO-RFfeed.png}
     \caption{Mixer oscillator to RF input feedthrough}
@@ -114,7 +134,7 @@ Although the assignment only asked to see conversion gain with respect to freque
 \end{figure}
 
 %Noise figure
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/MixerNoiseFigure.png}
     \caption{Graph of Mixer Noise Figure}
@@ -122,7 +142,7 @@ Although the assignment only asked to see conversion gain with respect to freque
 \end{figure}
 
 %Linearity
-\begin{figure}[h]
+\begin{figure}[H]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/mixerIIP3.png}
     \caption{Graph of Mixer linearity}
