@@ -2,6 +2,45 @@
 include three sub-sections: one for LNA, one for Mixer and one for VCO. For each subsection discuss the design procedure (describe the circuit architecture, provide justification, and describe your approach for determining the size of transistors and the values of passive elements), include transistor-level schematic, simulation results, and a table summarizing the performance metrics of the circuit.
 
 \subsection{Low Noise Amplifier}
+As shown in Figure 1, there are two structures are popular used in the design of LNA, “cascade structure” and “current-reuse structure”. 
+
+%figure here
+
+As the current reuse structure, the two common source amplifiers use the same drain to source current. The power consumption is minimized by using this kind of structure. Also, the gm parameter of this component is the $g_m$ of nFET plus the gm of pFET. In this way, the gain of this structure has been increased. The gain of the current reuse LNA is:
+
+\begin{equation} 
+  	\frac{g_{mtot}}{2R_s \omega_0 C_{gs}}Z_{load}
+	\label{eq:lnagain}
+\end{equation}
+
+Here the $C_{gs}$ in ~\ref{eq:lnagain} is the total $C_{gs}$ of nFET and pFET. Also, the two transistors in the current reuse structure can be biased into subthreshold region to minimize the power consumption. The input matching should be matched to 50 $\Omega$. From the gates of the transistors, input impedance is:
+
+\begin{equation} 
+  	\frac{g_mL_s}{C_{gs}} + j[\omega (L_s+L_g) - \frac{1}{\omega C_{gs}}]
+	\label{eq:inputimp}
+\end{equation}
+
+The real part in ~\ref{eq:inputimp} should be matched to 50 $\Omega$, and imaginary part should be matched to 0 $\Omega$. The input can be easily matched. The output, however, is difficult to be matched. The output impedance of this structure is:
+
+\begin{equation} 
+  	r_0 + j\frac{\omega(r_0g_{mtot}L_s+L_s-\omega^2L_sL_gC_{gs})}{1-(L_s+L_g)C_{gs}\omega^2}
+\end{equation}
+
+The imaginary part has the two same poles, also the pole is considered to be the central frequency. At the central frequency, the imaginary part goes to infinite, which makes it difficult to do the output matching. Because of this reason, cascade structure is used.
+
+In cascade structure, the common source amplifier is the main amplifier. By applying the common gate, a good reverse isolation property is obtained. Fortunately, the input impedance of this structure is the same as the current reuse one (~\ref{eq:inputimp}). Thus, the input matching can be easily achieved. The output impedance of the cascade structure is (ignore channel length modulation):
+
+\begin{equation} 
+  	\frac{SLR_L}{SL+R_L-\omega^2LCR_L}
+\end{equation}
+
+At the central frequency, the output impedance equals to the load resistance. For matching the output, the load resistance is similar to the input impedance of next stage of the system, which is 500 $\Omega$. To analysis the gain parameters, the equation of cascade structure gain is derived: 
+
+\begin{equation} 
+  	\frac{R_L}{2\omega_0L_s}
+\end{equation}
+
+The load resistor and central frequency is fixed. To get a high gain LNA, the only free parameter can be adjusted is the source degenerated inductor. But, this inductor can affect the input matching. Therefore, the value of all of the components should be carefully selected. Cadence simulator is used to do the simulation of the proposed LNA. 
 
 \subsection{Mixer}
 
