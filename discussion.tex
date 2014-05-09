@@ -1,2 +1,7 @@
-\section{Discussion}
-Discussion goes here
+\section{Conclusions}
+
+To summarize: we implemented a front end receiver using 0.18 $\mu$m CMOS technology. Our LNA was a cascode topology with current reuse and our mixer was a modification of a Gilbert cell with separate PMOS switching pairs and NMOS transconductors. 
+
+Future work on this receiver would have to be to improve the linearity and lower the power consumption. The linearity of the system is limited by the linearity of the mixer, which operated at a less-than-expected -12 dBm. According to Frii's equation~\cite{Razavi}, the gain of the LNA reduces the linearity of the mixer. This in turn reduces the linearity of the overall system, since the linearity of the chain can be approximated to be equal to the linearity of the last block in the receiver chain divided by the gain of the preceding blocks. Since the LNA gain was high and the mixer linearity was already low, it resulted in sub-par total linearity for the total system. 
+
+To improve the linearity of the mixer requires extremely precise and careful iteration over the device parameters. The switching pairs DC bias and oscillator swing voltage need to be tuned more carefully to increase the linearity without sacrificing too much of the total gain. Additionally, high side injection could be used with the VCO instead of low-side injection. This would mean the oscillator is switching even faster, keeping the switches in triode for a shorter transition period and thus improving the linearity. A different way would be to tweak the inductor values without sacrificing too much gain. A third way would be to both increase the supply voltage and reduce the current so as to keep power consumption minimal.
