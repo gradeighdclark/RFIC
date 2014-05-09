@@ -6,7 +6,7 @@ Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the inp
 \begin{figure}[h]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/s11.png}
-    \caption{}
+    \caption{Graph of LNA S11 input matching}
     \label{fig:s11}
 \end{figure}
 
@@ -14,7 +14,7 @@ Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the inp
 \begin{figure}[h]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/s22.png}
-    \caption{}
+    \caption{Graph of LNA S22 output matching}
     \label{fig:s22}
 \end{figure}
 
@@ -22,40 +22,111 @@ Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the inp
 \begin{figure}[h]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/s21.png}
-    \caption{}
+    \caption{Graph of LNA S21 gain}
     \label{fig:s21}
 \end{figure}
 
 %1dbcompression
 \begin{figure}[h]
    \centering
-    \includegraphics[width=0.5\textwidth]{figures/1db.png}
-    \caption{}
+    \includegraphics[width=0.5\textwidth]{figures/s21.png}
+    \caption{LNA 1 dB compression point}
     \label{fig:1db}
 \end{figure}
 
 %IIP3
 \begin{figure}[h]
    \centering
-    \includegraphics[width=0.5\textwidth]{figures/lnaiip3.png}
-    \caption{}
+    \includegraphics[width=0.5\textwidth]{figures/s21.png}
+    \caption{LNA Linearity}
     \label{fig:lnaiip3}
 \end{figure}
 
 %noise
 \begin{figure}[h]
    \centering
-    \includegraphics[width=0.5\textwidth]{figures/lnanoise.png}
-    \caption{ }
+    \includegraphics[width=0.5\textwidth]{figures/s21.png}
+    \caption{Graph of LNA noise figure}
     \label{fig:lnanoise}
 \end{figure}
 
 %min noise
 \begin{figure}[h]
    \centering
-    \includegraphics[width=0.5\textwidth]{figures/lnanoisemin.png}
-    \caption{}
+    \includegraphics[width=0.5\textwidth]{figures/s21.png}
+    \caption{Graph of LNA minimum noise figure}
     \label{fig:lnanoisemin}
+\end{figure}
+
+\subsection{Mixer}
+Although the assignment only asked to see conversion gain with respect to frequency as shown in Fig. ~\ref{fig:cgfreq} we also simulated for conversion gain with respect to input power as shown in Fig. ~\ref{fig:cgpwr}. These graphs show that the mixer is able to maintain good gain across the frequencies of interest as well as consistent gain across sensitivities as low as -100 dBm. Fig. ~\ref{fig:loif} and Fig. ~\ref{fig:lorf} show the VCO feedthrough to the input and output ports. As can be seen in the graphs, the setup of the mixer causes this these figures to be very low. The noise of the mixer was found to be 4.40 dB as shown in Fig. ~\ref{fig:mixernoise}. Lastly, the linearity of the mixer can be found in Fig. ~\ref{fig:mixerlin}. The linearity is quite lower than expected however this was a trade-off to achieve a high gain and low noise. Final mixer results can be found in TABLE ~\ref{tab:mixerresults}.
+
+%table of results
+\begin{table}[h]
+\begin{center}
+	\begin{tabular}{ |c | c | }
+ 		\hline                      
+  		Conversion gain &  10.50 dB\\ \hline
+  		LO-IF feedthrough &  -75.06 dB\\ \hline
+  		LO-RF feedthrough & -103.40 dB\\ \hline
+		Noise Figure &  4.40 dB\\ \hline
+		IIP3 & -13.26 dBm\\ \hline
+		Power & 0.8 mW \\ 
+  		\hline  
+	\end{tabular}
+
+\end{center}
+\caption{Final results from Mixer simulations}
+\label{tab:mixerresults}
+\end{table}
+
+%mixer conversion gain vs frequency
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.5\textwidth]{figures/MixerConversionGainFreq.pdf}
+    \caption{Mixer conversion gain with respect to frequency}
+    \label{fig:cgfreq}
+\end{figure}
+
+%mixer conversion gain vs power
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.5\textwidth]{figures/MixerConversionGain.pdf}
+    \caption{Mixer conversion gain with respect to input power}
+    \label{fig:cgpwr}
+\end{figure}
+
+
+%LO-IF feedthrough
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.5\textwidth]{figures/MixerLO-IFfeed.pdf}
+    \caption{Mixer oscillator to IF output feedthrough}
+    \label{fig:loif}
+\end{figure}
+
+%LO-RF feedthrough
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.5\textwidth]{figures/MixerLO-RFfeed.pdf}
+    \caption{Mixer oscillator to RF input feedthrough}
+    \label{fig:lorf}
+\end{figure}
+
+%Noise figure
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.5\textwidth]{figures/MixerNoiseFigure.pdf}
+    \caption{Graph of Mixer Noise Figure}
+    \label{fig:mixernoise}
+\end{figure}
+
+%Linearity
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.5\textwidth]{figures/mixerIIP3.png}
+    \caption{Graph of Mixer linearity}
+    \label{fig:mixerlin}
 \end{figure}
 
 \subsection{Voltage Controlled Oscillator}
