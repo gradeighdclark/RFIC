@@ -1,49 +1,54 @@
 \section{Circuit Design}
 \subsection{Low Noise Amplifier}
-As shown in Fig. ~\ref{fig:lna}, there are two structures are popular used in the design of LNA, "cascode structure" and "current-reuse structure". 
+Low noise amplifiers(LNA) are typically one of the starting blocks in the front end receiver chain. LNAs need to exhibit low noise, high gain, and low power dissipation. The linearity doesn't need to be so good, but it can't be so bad as to limit the overall linearity of the chain. The noise figure needs to be low because the noise figure of the system can be approximately equal to the noise figure of the first block, assuming there is no other block in the system that isn't so large that it won't be scaled by the gain of the prior blocks. 
+
+\subsubsection{Design Procedure}
+As shown in Figure ~\ref{fig:lna}, there are two structures that are popularly used when designing LNAs:  cascode~\cite{Razavi} and current reuse~\cite{lna}. 
 
 \begin{figure}[h]
    \centering
     \includegraphics[width=0.5\textwidth]{figures/LNA.png}
-    \caption{Cascode (left) and Current Reuse (right) structure ~\cite{lna}}
+    \caption{Cascode (left) and Current Reuse (right) structure, both figures borrowed from Cha et. al~\cite{lna}.}
     \label{fig:lna}
 \end{figure}
 
-As the current reuse structure, the two common source amplifiers use the same drain to source current. The power consumption is minimized by using this kind of structure. Also, the $g_m$ parameter of this component is the $g_m$ of nFET plus the $g_m$ of pFET. In this way, the gain of this structure has been increased. The gain of the current reuse LNA is:
+It isn't clear exactly which structure would be better: cascode or current-reuse. As such, what follows is our analysis of current reuse to figure out if there are any problems with it.
+
+With the current reuse structure, the active components are heavily restrained so as to limit the power consumption~\cite{lna}. As such, the passive networks depicted in Figure~\ref{fig:lna} perform much of the gain~\cite{lna}. The power consumption is minimized by using this kind of structure since we need a small operating current to activate the MOSFETs and we will achieve gain from the other components. Additionally, the two transistors in the current reuse structure can be biased into subthreshold region to minimize the power consumption. The $g_m$ parameter of this component is the $g_m$ of NMOS plus the $g_m$ of the PMOS. In this way, the effective transconductance is larger than it would be otherwise. The gain of the current reuse LNA is:
 
 \begin{equation} 
-  	\frac{g_{mtot}}{2R_s \omega_0 C_{gs}}Z_{load}
+  	A_{v} = \frac{g_{mtot}}{2R_s \omega_0 C_{gs}}Z_{load}
 	\label{eq:lnagain}
 \end{equation}
 
-Here the $C_{gs}$ in (\ref{eq:lnagain}) is the total $C_{gs}$ of nFET and pFET. Also, the two transistors in the current reuse structure can be biased into subthreshold region to minimize the power consumption. The input matching should be matched to 50 $\Omega$. From the gates of the transistors, input impedance is:
+The $C_{gs}$ given in (\ref{eq:lnagain}) is the total $C_{gs}$ of the stacked transistor pair.  The input matching should be matched to 50 $\Omega$. From the gates of the transistors, the input impedance would be given by:
 
 \begin{equation} 
-  	\frac{g_mL_s}{C_{gs}} + j[\omega (L_s+L_g) - \frac{1}{\omega C_{gs}}]
+  	Z_{in}(j\omega)=\frac{g_mL_s}{C_{gs}} + j[\omega (L_s+L_g) - \frac{1}{\omega C_{gs}}]
 	\label{eq:inputimp}
 \end{equation}
 
-The real part in (\ref{eq:inputimp}) should be matched to 50 $\Omega$, and imaginary part should be matched to 0 $\Omega$. The input can be easily matched. The output, however, is difficult to be matched. The output impedance of this structure is:
+The real part in (\ref{eq:inputimp}) should be matched to 50 $\Omega$, and imaginary part should be matched to 0 $\Omega$. Input matching is a simple problem. Output matching, however, is much more difficulty. Examining the output impedance:
 
 \begin{equation} 
-  	r_0 + j\frac{\omega(r_0g_{mtot}L_s+L_s-\omega^2L_sL_gC_{gs})}{1-(L_s+L_g)C_{gs}\omega^2}
+  	Z_{out}(j\omega) = r_0 + j\frac{\omega(r_0g_{mtot}L_s+L_s-\omega^2L_sL_gC_{gs})}{1-(L_s+L_g)C_{gs}\omega^2}
 \end{equation}
 
-The imaginary part has the two same poles, also the pole is considered to be the central frequency. At the central frequency, the imaginary part goes to infinite, which makes it difficult to do the output matching. Because of this reason, cascode structure is used.
+The imaginary part has the same two poles, but also the pole which is considered to be the center frequency. At the center frequency, the imaginary part diverges to infinity -- this makes it difficult to do the output matching. Because of this reason, we switched back to the cascode structure is used.
 
-In cascode structure, the common source amplifier is the main amplifier. By applying the common gate, a good reverse isolation property is obtained. Fortunately, the input impedance of this structure is the same as the current reuse one (\ref{eq:inputimp}). Thus, the input matching can be easily achieved. The output impedance of the cascode structure is (ignore channel length modulation):
+In the cascode structure, the common source amplifier is the main amplifier. By applying the common gate, we can get good reverse isolation since there is no connecting path for current to flow between the ports when the gate is an AC ground ~\cite{Razavi}. Fortunately, the input impedance of this structure is the same as the current reuse one (\ref{eq:inputimp}). Thus, the input matching can be easily achieved. The output impedance of the cascode structure is given by:
 
 \begin{equation} 
-  	\frac{SLR_L}{SL+R_L-\omega^2LCR_L}
+  	Z_{out}(j\omega) = \frac{SLR_L}{SL+R_L-\omega^2LCR_L}
 \end{equation}
 
-At the central frequency, the output impedance equals to the load resistance. For matching the output, the load resistance is similar to the input impedance of next stage of the system, which is 500 $\Omega$. To analyze the gain parameters, the equation of cascode structure gain is derived: 
+At the center frequency, the output impedance can be made equal to  the load resistance of the next stage. Next, we consider the gain parameters of this structure. The gain is given by:
 
 \begin{equation} 
-  	\frac{R_L}{2\omega_0L_s}
+  	A_{v} = \frac{R_L}{2\omega_0L_s}
 \end{equation}
 
-The load resistor and central frequency is fixed. To get a high gain LNA, the only free parameter can be adjusted is the source degenerated inductor. But, this inductor can affect the input matching. Therefore, the value of all of the components should be carefully selected. Cadence simulator is used to do the simulation of the proposed LNA. 
+The load resistor and center frequency are fixed parameters. To get a high gain with this LNA, the only free parameter that can be adjusted is the source degenerated inductor. However, this inductor is selected in such a way as to perform input matching. This is where the iterative design process begins to take off and now all the components can be carefully selected to get good results.
 
 \subsection{Mixer}
 
@@ -129,21 +134,21 @@ The parameters that affected our results the most are as follows:
 These are a small subset of the variables used when iterating over the design. Results are discussed later on.
 
 \subsection{Voltage Controlled Oscillator}
-As shown in Figure \ref{fig:vco}, the proposed single-ended VCO uses a pair of complementary np-MOSFETs so that the dc current can be reused and a low power VCO can be realized \cite{vco}. The LC tank will determine the oscillation frequency by:
+As shown in Figure \ref{fig:vco}, the proposed single-ended VCO uses a pair of complementary PN-MOSFETs so that the DC current can be reused and a low power VCO can be realized, following the logic given by Jang et. al~\cite{vco}. The LC tank determines the oscillation frequency:
 
 \begin{equation}
-f_0 = \frac{1}{2\pi\sqrt{L_2C_V}}
+\omega_{0} = \frac{1}{\sqrt{L_2C_V}}
 \end{equation}
 
-Note that, $C_V$ includes varactors, gate-source and drain-source capacitors of np-MOSFETs. The varactors are used to tune the VCO oscillation frequency. The transistors are configured to provide a negative resistance to compensate the tank loss. 
+Note that, $C_V$ includes the varactors as well as the parasitic gate-source and drain-source capacitors of the PN-MOSFETs. The varactors are used to tune the VCO oscillation frequency and the transistors are configured to provide a negative resistance to compensate for the tank loss. 
 
 \begin{figure}[h]
    \centering
     \includegraphics[width=0.50\textwidth]{figures/VCO.png}
-    \caption{Schematic of the proposed VCO}
+    \caption{Schematic of the VCO, borrowed from Jang~\cite{vco}.}
     \label{fig:vco}
 \end{figure}
 
 
-The nMOS has the dimension of $\frac{W}{L}=\frac{30}{0.18}$ and the pMOS has the dimension of $\frac{W}{L}=\frac{200}{0.18}$, both in micro. The values for inductor and varactors are optimized to center the oscillation frequency at 400 MHz. Note that, for better estimation of the VCO performance, all the capacitors, inductors and resistors are used as non-ideal components in the Cadence simulation. 
+The nMOS has the dimension of $\frac{W}{L}=\frac{30}{0.18}$ and the pMOS has the dimension of $\frac{W}{L}=\frac{200}{0.18}$, both in micro. The values for inductor and varactors are optimized to center the oscillation frequency at 400 MHz.
 
