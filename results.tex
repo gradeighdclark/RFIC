@@ -1,20 +1,21 @@
 \section{Results}
 \subsection{Low Noise Amplifier}
-Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the input matching quality. The minimum input matching is -21 dB. Fig. ~\ref{fig:s22}, the S22, output matching is presented. The minimum matching point is -33 dB. Also, the gain (S21 parameters) can be seen from Fig. ~\ref{fig:s21}. This LNA provides a relative high gain, 17.5 dB. To show the linearity property of the LNA, the 1 dB compression point plot is presented in Fig. ~\ref{fig:lna1db}. From the figure, the 1 dB compression point is -16.46 dBm. Also, the IIP3 is preformed in cadence simulation, which is shown in Fig. ~\ref{fig:lnaiip3}. The IIP3 point is -7.77 dBm. Noise Figure and minimum Noise Figure of the LNA is presented In Fig. ~\ref{fig:lnanoise} and Fig. ~\ref{fig:lnanoisemin} respectively. The Noise Figure is 3.4 dB and the minimum Noise Figure is 1.2 dB. To match the design requirement, the DC power consumption of the LNA is 0.57 mW. Final LNA results can be found in TABLE \ref{tab:lnaresults}
+Figure~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the input matching quality. The minimum input matching is -21 dB. Figure~\ref{fig:s22}, the S22, output matching is presented. The minimum matching point is -33 dB. Also, the gain (S21 parameters) can be seen from Figure~\ref{fig:s21}. This LNA provides a relative high gain, 17.5 dB. To show the linearity property of the LNA, the 1 dB compression point plot is presented in Figure~\ref{fig:lna1db}. From the figure, the 1 dB compression point is -16.46 dBm. Also, the IIP3 is preformed in cadence simulation, which is shown in Figure~\ref{fig:lnaiip3}. The IIP3 point is -7.77 dBm. Noise Figure and minimum Noise Figure of the LNA is presented In Figure~\ref{fig:lnanoise} and Figure~\ref{fig:lnanoisemin} respectively. The Noise Figure is 3.4 dB and the minimum Noise Figure is 1.2 dB. To match the design requirement, the DC power consumption of the LNA is 0.57 mW. Final LNA results can be found in Table~\ref{tab:lnaresults}.
 
 %table of results
-\begin{table}[H]
+\begin{table}[h]
 \begin{center}
-	\begin{tabular}{ |c | c | }
- 		\hline                      
+	\begin{tabular}{ c | c  }
+ 		                      
   		S11 & -21 dB \\ \hline
   		S21 &  17.50 dB \\ \hline
   		S22 & -33 dB \\ \hline
-		NF/NFmin & 3.40/1.2 dB \\ \hline
+		NF/ & 3.40 \\ \hline
+		NF$_{min}$ & 1.2 dB \\ \hline
 		IIP3 & -7.77 dBm\\ \hline
-		1 dB compression & -16.46 dBm \\  \hline
-		Power consumption & 0.57 mW \\ 
-  		\hline  
+		1 dB Compression & -16.46 dBm \\  \hline
+		Power Consumption & 0.57 mW \\ 
+
 	\end{tabular}
 
 \end{center}
@@ -79,20 +80,20 @@ Fig. ~\ref{fig:s11} shows the S11 parameters of the LNA, which indicates the inp
 \end{figure}
 
 \subsection{Mixer}
-Although the assignment only asked to see conversion gain with respect to frequency as shown in Fig. ~\ref{fig:cgfreq} we also simulated for conversion gain with respect to input power as shown in Fig. ~\ref{fig:cgpwr}. These graphs show that the mixer is able to maintain good gain across the frequencies of interest as well as consistent gain across sensitivities as low as -100 dBm. Fig. ~\ref{fig:loif} and Fig. ~\ref{fig:lorf} show the VCO feedthrough to the input and output ports. As can be seen in the graphs, the setup of the mixer causes these figures to be very low. The noise of the mixer was found to be 4.40 dB as shown in Fig. ~\ref{fig:mixernoise}. Lastly, the linearity of the mixer can be found in Fig. ~\ref{fig:mixerlin}. The linearity is quite lower than expected however this was a trade-off to achieve a high gain and low noise. Final mixer results can be found in TABLE ~\ref{tab:mixerresults}.
+Although the assignment only asked to see conversion gain with respect to frequency as shown in Figure~\ref{fig:cgfreq} we also simulated for conversion gain with respect to input power as shown in Figure~\ref{fig:cgpwr}. These graphs show that the mixer is able to maintain good gain across the frequencies of interest as well as consistent gain across sensitivities as low as -100 dBm. Figure~\ref{fig:loif} and Figure~\ref{fig:lorf} show the VCO feedthrough to the input and output ports. As can be seen in the graphs, the setup of the mixer causes these figures to be very low. The noise of the mixer was found to be 4.40 dB as shown in Figure ~\ref{fig:mixernoise}. Lastly, the linearity of the mixer can be found in Figure~\ref{fig:mixerlin}. The linearity is quite lower than expected however this was a trade-off to achieve a high gain and low noise. Final mixer results can be found in Table~\ref{tab:mixerresults}.
 
 %table of results
-\begin{table}[H]
+\begin{table}[h]
 \begin{center}
-	\begin{tabular}{ |c | c | }
- 		\hline                      
-  		Conversion gain &  10.50 dB\\ \hline
-  		LO-IF feedthrough &  -75.06 dB\\ \hline
-  		LO-RF feedthrough & -103.40 dB\\ \hline
-		Noise Figure &  4.40 dB\\ \hline
+	\begin{tabular}{ c | c  }
+
+  		Conversion Gain &  10.50 dB\\ \hline
+  		LO-IF Feedthrough &  -75.06 dB\\ \hline
+  		LO-RF Feedthrough & -103.40 dB\\ \hline
+		NF &  4.40 dB\\ \hline
 		IIP3 & -13.26 dBm\\ \hline
 		Power & 0.8 mW \\ 
-  		\hline  
+
 	\end{tabular}
 
 \end{center}
@@ -150,17 +151,17 @@ Although the assignment only asked to see conversion gain with respect to freque
 \end{figure}
 
 \subsection{Voltage Controlled Oscillator}
-Fig.~\ref{fig:vcotrans} shows the simulated output transients of the proposed VCO; the VCO provides two differential outputs with the same peak-peak value of 305 mV. The oscillation frequency can also be calculated from the period of sinusoidal waveform, which is 400 MHz. The phase noise is shown in Fig. ~\ref{fig:vcophase} and it is -119 $\frac{dBc}{Hz}$ at 1 MHz offset from the center frequency of 400 MHz. Fig. ~\ref{fig:vcotune} plots the simulated tuning curve by varying the controllable voltage. As the tuning voltage sweeps from -0.5 V to 1 V, the oscillation frequency changes from 393 MHz to 400 MHz, indicating a tunable range of 6 MHz. The VCO’s power consumption, which is a critical consideration in MedRadio application, is 0.2 mW. A table of results can be found in TABLE ~\ref{tab:vcoresults}.
+Figure~\ref{fig:vcotrans} shows the simulated output transients of the proposed VCO; the VCO provides two differential outputs with the same peak-peak value of 305 mV. The oscillation frequency can also be calculated from the period of sinusoidal waveform, which is 400 MHz. The phase noise is shown in Figure~\ref{fig:vcophase} and it is -119 $\frac{dBc}{Hz}$ at 1 MHz offset from the center frequency of 400 MHz. Figure~\ref{fig:vcotune} plots the simulated tuning curve by varying the controllable voltage. As the tuning voltage sweeps from -0.5 V to 1 V, the oscillation frequency changes from 393 MHz to 400 MHz, indicating a tunable range of 6 MHz. The VCO’s power consumption, which is a critical consideration in MedRadio application, is 0.2 mW. A table of results can be found in TABLE ~\ref{tab:vcoresults}.
 
 %table of results
 \begin{table}[h]
 \begin{center}
-	\begin{tabular}{ |c | c | }
- 		\hline                      
+	\begin{tabular}{ c | c  }
+
   		Tuning Range &  6 MHz \\ \hline
   		Phase noise &  -119 $\frac{dBc}{Hz}$ \\ \hline
 		Power & 0.2 mW \\ 
-  		\hline  
+
 	\end{tabular}
 
 \end{center}
