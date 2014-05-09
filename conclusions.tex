@@ -8,6 +8,21 @@ Improvements to the LNA would most likely include a change to the current-reuse 
 
 To improve the linearity of the mixer requires extremely precise and careful iteration over the device parameters. The switching pairs DC bias and oscillator swing voltage need to be tuned more carefully to increase the linearity without sacrificing too much of the total gain. Additionally, high side injection could be used with the VCO instead of low-side injection. This would mean the oscillator is switching even faster, keeping the switches in triode for a shorter transition period and thus improving the linearity. A different way would be to tweak the inductor values without sacrificing too much gain. A third way would be to both increase the supply voltage and reduce the current so as to keep power consumption minimal.
 
-A current reuse VCO structure is proposed to provide the LO frequency of 400 MHz. Only 0.2 mW power is consumed. A tunable frequency range of 6 MHz is achieved. To further improve the VCO performance, two single-ended half-circuit oscillators can be combined into one differential circuit. Theoretically, this structure will offer larger tunable frequency range while consume nearly the same power.
+A current reuse VCO structure is proposed to provide the LO frequency of 400 MHz while only 0.2 mW power is consumed and achieving a tunable frequency range of 6 MHz. To further improve the VCO performance, two single-ended half-circuit oscillators can be combined into one differential circuit. Theoretically, this structure will offer a larger tunable frequency range while consuming nearly the same power.
 
-Overall, the entire receiver achieves a gain of 36 dB which is much greater than the project requirements of 25 dB. The Noise Figure is almost five times less than the specifications of 15 dB  at 3.65 dB. The only problem with our design is the low linearity which did not meet the final specification of -25 dBm where instead this receiver is -31 dBm. However, the total power consumption is 1.8 mW which is fairly small, it is also possible to improve this by implementing some of the changes proposed here. 
+Overall, the entire receiver achieves a gain of 36 dB which is much greater than the project requirements of 25 dB. The Noise Figure is almost five times less than the specifications of 15 dB  at 3.65 dB. The only problem with our design is the low linearity which did not meet the final specification of -25 dBm where instead this receiver is -31 dBm. However, the total power consumption is 1.8 mW which is fairly small, it is also possible to improve this by implementing some of the changes proposed here. The final results are neatly summarized in TABLE~\ref{tab:totalresults}
+
+
+\begin{table}[h]
+\begin{center}
+	\begin{tabular}{ c | c | c | c  }
+		Value & Assigned & Proposed & Actual \\ \hline
+		Gain & $>$25 dB & $>$28.7 dB & 36 dB \\ \hline
+		Noise Figure & $<$15 dB & $<$5.5 dB & 3.65 dB \\ \hline
+		IIP3 & $>$-25 dBm & -25 dBm & -31 dBm \\ 
+	\end{tabular}
+
+\end{center}
+\caption{Summary of total results. Assigned are the values given in the assignment, proposed are the target ones we set to achieve, and actual are the final results we got.}
+\label{tab:totalresults}
+\end{table}
