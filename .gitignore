@@ -217,7 +217,6 @@ pip-log.txt
 #TeX
 *.aux
 *.synctex.gz
-*.pdf
 *.log
 *.out
 *.blg
