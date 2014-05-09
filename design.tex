@@ -31,7 +31,7 @@ The $C_{gs}$ given in (\ref{eq:lnagain}) is the total $C_{gs}$ of the stacked tr
 The real part in (\ref{eq:inputimp}) should be matched to 50 $\Omega$, and imaginary part should be matched to 0 $\Omega$. Input matching is a simple problem. Output matching, however, is much more difficulty. Examining the output impedance:
 
 \begin{equation} 
-  	Z_{out}(j\omega) = r_0 + j\frac{\omega(r_0g_{mtot}L_s+L_s-\omega^2L_sL_gC_{gs})}{1-(L_s+L_g)C_{gs}\omega^2}
+  	Z_{out}(j\omega) = r_0 + j\omega\frac{(r_0g_{mtot}L_s+L_s-\omega^2L_sL_gC_{gs})}{1-(L_s+L_g)C_{gs}\omega^2}
 \end{equation}
 
 The imaginary part has the same two poles, but also the pole which is considered to be the center frequency. At the center frequency, the imaginary part diverges to infinity -- this makes it difficult to do the output matching. Because of this reason, we switched back to the cascode structure is used.
@@ -39,7 +39,7 @@ The imaginary part has the same two poles, but also the pole which is considered
 In the cascode structure, the common source amplifier is the main amplifier. By applying the common gate, we can get good reverse isolation since there is no connecting path for current to flow between the ports when the gate is an AC ground ~\cite{Razavi}. Fortunately, the input impedance of this structure is the same as the current reuse one (\ref{eq:inputimp}). Thus, the input matching can be easily achieved. The output impedance of the cascode structure is given by:
 
 \begin{equation} 
-  	Z_{out}(j\omega) = \frac{SLR_L}{SL+R_L-\omega^2LCR_L}
+  	Z_{out}(j\omega) = \frac{SLR_L}{j\omega L+R_L-\omega^2LCR_L}
 \end{equation}
 
 At the center frequency, the output impedance can be made equal to  the load resistance of the next stage. Next, we consider the gain parameters of this structure. The gain is given by:
@@ -63,12 +63,12 @@ The typical mixer implementation is a standard Gilbert cell~\cite{gilbert}, whic
    \centering
     \includegraphics[width=0.40\textwidth]{figures/Mixer.pdf}
     \caption{
-        Circuit schematic of the modified Gilbert cell~\cite{krcmar1} used in our mixer. The top row of pMOS transistors are the switching pairs. The middle row of nMOS transistors are the transconductors with current being driven by the current sink at the bottom.
+        Circuit schematic of the modified Gilbert cell~\cite{krcmar1} used in our mixer. The top row of PMOS transistors are the switching pairs. The middle row of NMOS transistors are the transconductors with current being driven by the current sink at the bottom.
     }
     \label{fig:mixer}
 \end{figure}
 
-The advantages of this circuit is that the biasing of the switching pairs and the transconductors are now totally separated, allowing it to operate at a lower supply voltage without weakening circuit operation\~cite{krcmar1}. The transconductors have control over the gain portion of the circuit and need to have careful current control through them, hence a current sink is connected to the source of the MOSFETs. For the switching pairs, the pMOS are biased to be barely on; mostly off.  The VCO signal will come into the switching pairs and quickly switch it into saturation and then back out again. It is to our disadvantage if the switching pairs enter the triode region since that will reduce the linearity and cause the gain to compress faster~\cite{Razavi}. 
+The advantages of this circuit is that the biasing of the switching pairs and the transconductors are now totally separated, allowing it to operate at a lower supply voltage without weakening circuit operation\~cite{krcmar1}. The transconductors have control over the gain portion of the circuit and need to have careful current control through them, hence a current sink is connected to the source of the MOSFETs. For the switching pairs, the PMOS are biased to be barely on; mostly off.  The VCO signal will come into the switching pairs and quickly switch it into saturation and then back out again. It is to our disadvantage if the switching pairs enter the triode region since that will reduce the linearity and cause the gain to compress faster~\cite{Razavi}. 
 
 The source and gate inductors connected to the transconductors are selected for input matching and to resonate the circuit. The drain inductor is sized to resonate with the VCO's parasitic source capacitance~\cite{krcmar1}. Accordingly, the input impedance is given by:
 
@@ -107,7 +107,7 @@ Because of the input matching the transconductance term is modified and the fina
 C.G. = \frac{1}{\pi}\frac{g_{m}Z_{out}}{\sqrt{(1-\omega^{2}L_{source}C_{gs})^{2}+(\omega L_{source}g_{m})^{2}}}
 \end{equation}
 
-As a starting point, we made an assumption for the value of $C_{gs}$ using estimates culled from the IBM7RF~\cite{ibm7rf} library for the nMOS transistors and also assumed the output impedance was a single load resistor matched to 50 $\Omega$. Using that, we were able to make substitutions into the C.G. equation and solved for the desired value of the transconductance. After that, the input inductors were sized using the previous equations and assuming a center frequency of 403.5 MHz. Our initial design estimate assumed the current to start at 1 mA and we were able to get the sizing ratio using the below:
+As a starting point, we made an assumption for the value of $C_{gs}$ using estimates culled from the IBM7RF~\cite{ibm7rf} library for the NMOS transistors and also assumed the output impedance was a single load resistor matched to 50 $\Omega$. Using that, we were able to make substitutions into the C.G. equation and solved for the desired value of the transconductance. After that, the input inductors were sized using the previous equations and assuming a center frequency of 403.5 MHz. Our initial design estimate assumed the current to start at 1 mA and we were able to get the sizing ratio using the below:
 
 \begin{equation}
 \frac{W}{L} = \frac{g_{m}^2}{2K_{n}I}
@@ -124,7 +124,7 @@ The parameters that affected our results the most are as follows:
 
 \begin{itemize}
 	\item Width. This affected virtually every figure of merit (noise, gain, linearity), so it had to be tuned with great care. Accordingly, we wanted to keep the width below the millimeter scale at all costs.
-	\item Switching DC bias and VCO swing. The DC bias of the LO pFETs was selected at a point where the VCO would have to swing as little as possible to switch the transistor from off to saturation (in order to reduce VCO power consumption). This primarily affected the gain and linearity of the circuit.
+	\item Switching DC bias and VCO swing. The DC bias of the LO PFETs was selected at a point where the VCO would have to swing as little as possible to switch the transistor from off to saturation (in order to reduce VCO power consumption). This primarily affected the gain and linearity of the circuit.
 	\item Transistor fingers. The more fingers available lowered the parasitics of the transconductor stages. Increasing the fingers led to improved noise figure and linearity.
 	\item Input impedance. The value of the input impedance had a large effect on our noise figure; we opted to increase the value we input matched to in order to reduce our overall noise.
 	\item Output impedance. We needed to increase the gain without increasing the current. The only way to do that was to increase the size of the load resistor.
@@ -150,5 +150,5 @@ Note that, $C_V$ includes the varactors as well as the parasitic gate-source and
 \end{figure}
 
 
-The nMOS has the dimension of $\frac{W}{L}=\frac{30}{0.18}$ and the pMOS has the dimension of $\frac{W}{L}=\frac{200}{0.18}$, both in micro. The values for inductor and varactors are optimized to center the oscillation frequency at 400 MHz.
+The NMOS has the dimension of $\frac{W}{L}=\frac{30}{0.18}$ and the PMOS has the dimension of $\frac{W}{L}=\frac{200}{0.18}$, both in micro. The values for inductor and varactors are optimized to center the oscillation frequency at 400 MHz.
 
