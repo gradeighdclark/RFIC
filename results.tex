@@ -83,7 +83,7 @@ Although the assignment only asked to see conversion gain with respect to freque
 %mixer conversion gain vs frequency
 \begin{figure}[h]
    \centering
-    \includegraphics[width=0.5\textwidth]{figures/MixerConversionGainFreq.pdf}
+    \includegraphics[width=0.5\textwidth]{figures/MixerConversionGainFreq.png}
     \caption{Mixer conversion gain with respect to frequency}
     \label{fig:cgfreq}
 \end{figure}
@@ -91,7 +91,7 @@ Although the assignment only asked to see conversion gain with respect to freque
 %mixer conversion gain vs power
 \begin{figure}[h]
    \centering
-    \includegraphics[width=0.5\textwidth]{figures/MixerConversionGain.pdf}
+    \includegraphics[width=0.5\textwidth]{figures/MixerConversionGain.png}
     \caption{Mixer conversion gain with respect to input power}
     \label{fig:cgpwr}
 \end{figure}
@@ -100,7 +100,7 @@ Although the assignment only asked to see conversion gain with respect to freque
 %LO-IF feedthrough
 \begin{figure}[h]
    \centering
-    \includegraphics[width=0.5\textwidth]{figures/MixerLO-IFfeed.pdf}
+    \includegraphics[width=0.5\textwidth]{figures/MixerLO-IFfeed.png}
     \caption{Mixer oscillator to IF output feedthrough}
     \label{fig:loif}
 \end{figure}
@@ -108,7 +108,7 @@ Although the assignment only asked to see conversion gain with respect to freque
 %LO-RF feedthrough
 \begin{figure}[h]
    \centering
-    \includegraphics[width=0.5\textwidth]{figures/MixerLO-RFfeed.pdf}
+    \includegraphics[width=0.5\textwidth]{figures/MixerLO-RFfeed.png}
     \caption{Mixer oscillator to RF input feedthrough}
     \label{fig:lorf}
 \end{figure}
@@ -116,7 +116,7 @@ Although the assignment only asked to see conversion gain with respect to freque
 %Noise figure
 \begin{figure}[h]
    \centering
-    \includegraphics[width=0.5\textwidth]{figures/MixerNoiseFigure.pdf}
+    \includegraphics[width=0.5\textwidth]{figures/MixerNoiseFigure.png}
     \caption{Graph of Mixer Noise Figure}
     \label{fig:mixernoise}
 \end{figure}
@@ -130,4 +130,44 @@ Although the assignment only asked to see conversion gain with respect to freque
 \end{figure}
 
 \subsection{Voltage Controlled Oscillator}
-Fig.2 shows the simulated output transients of the proposed VCO; the VCO provides two differential outputs with the same peak-peak value of 305 mV. The oscillation frequency can also be calculated from the period of sinusoidal waveform, which is 400 MHz. The phase noise is shown in Fig.3 and it is -119 dBc/Hz at 1MHz offset from the center frequency of 400 MHz. Fig.4 plots the simulated tuning curve by varying the controllable voltage. As the tuning voltage sweeps from -0.5 V to 1 V, the oscillation frequency changes from 393 MHz to 400 MHz, indicating a tunable range of 6 MHz. The VCO’s power consumption, which is a critical consideration in Medradio application, is 0.2 mW.
+Fig.~\ref{fig:vcotrans} shows the simulated output transients of the proposed VCO; the VCO provides two differential outputs with the same peak-peak value of 305 mV. The oscillation frequency can also be calculated from the period of sinusoidal waveform, which is 400 MHz. The phase noise is shown in Fig. ~\ref{fig:vcophase} and it is -119 $\frac{dBc}{Hz}$ at 1MHz offset from the center frequency of 400 MHz. Fig. ~\ref{fig:vcotune} plots the simulated tuning curve by varying the controllable voltage. As the tuning voltage sweeps from -0.5 V to 1 V, the oscillation frequency changes from 393 MHz to 400 MHz, indicating a tunable range of 6 MHz. The VCO’s power consumption, which is a critical consideration in MedRadio application, is 0.2 mW. A table of results can be found in TABLE ~\ref{tab:vcoresults}.
+
+%table of results
+\begin{table}[h]
+\begin{center}
+	\begin{tabular}{ |c | c | }
+ 		\hline                      
+  		Tuning Range &  6 MHz \\hline
+  		Phase noise &  -119 $\frac{dBc}{Hz}$ \\ \hline
+		Power & 0.2 mW \\ 
+  		\hline  
+	\end{tabular}
+
+\end{center}
+\caption{Final results from VCO simulations}
+\label{tab:vcoresults}
+\end{table}
+
+%VCO Trans
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.5\textwidth]{figures/VCOTrans.png}
+    \caption{Graph of VCO transient response}
+    \label{fig:vcotrans}
+\end{figure}
+
+%VCO Phase Noise
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.5\textwidth]{figures/VCOPhaseNoise.png}
+    \caption{Graph of VCO phase noise}
+    \label{fig:vcophase}
+\end{figure}
+
+%Tunning curve
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.5\textwidth]{figures/VCOTuning.png}
+    \caption{Graph of VCO tuning curve}
+    \label{fig:vcotune}
+\end{figure}
